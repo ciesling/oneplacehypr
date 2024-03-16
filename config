@@ -1,6 +1,6 @@
 exec-once = waybar
 exec-once = swww init && swww img ~/Desktop/dotfiles/wallpapers/wall2.jpg
-
+$mainMod = SUPER
 $terminal = wezterm
 $fileManager = nemo
 $menu = wofi --show drun
@@ -29,7 +29,7 @@ general {
   gaps_in = 6
   gaps_out = 6
   border_size = 2
-  layout = dwindle
+      layout = dwindle
   col.active_border = rgba(1B1D1DFF)
   col.inactive_border = rgba(1B1D1DFF)
 }
