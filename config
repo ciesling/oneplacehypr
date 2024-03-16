@@ -1,0 +1,108 @@
+exec-once = waybar
+exec-once = swww init && swww img ~/Desktop/dotfiles/wallpapers/wall2.jpg
+
+$terminal = wezterm
+$fileManager = nemo
+$menu = wofi --show drun
+$browser = firefox
+
+bind = $mainMod, Q, killactive, 
+bind = $mainMod, D, exec, $menu
+bind = $mainMod, B, exec, $browser
+bind = $mainMod, T, exec, $terminal
+bind = $mainMod, Y, exec, kitty
+bind = $mainMod, E, exec, $fileManager
+bind = $mainMod, V, togglefloating, 
+
+windowrule = float, ^(kitty)$
+blurls = waybar
+
+windowrulev2 = opacity 0.90 override 0.90 override,class:^(kitty)$
+windowrulev2 = noanim,class:^(xwaylandvideobridge)$
+windowrulev2 = noinitialfocus,class:^(xwaylandvideobridge)$
+windowrulev2 = maxsize 1 1,class:^(xwaylandvideobridge)$
+windowrulev2 = noblur,class:^(xwaylandvideobridge)$
+
+monitor=HDMI-A-1,1920x1080@75,auto,1.0
+monitor=DP-1,1920x1080@60,auto,1.0
+
+general {
+  gaps_in = 6
+  gaps_out = 6
+  border_size = 2
+  col.active_border = rgba(1B1D1DFF)
+  col.inactive_border = rgba(1B1D1DFF)
+}
+
+decoration {
+  rounding = 0
+  active_opacity = 1.0
+  inactive_opacity = 1.0
+  blur {
+    enabled = true
+    size = 9
+    passes = 0
+    new_optimizations = yes
+    xray = false
+    contrast = 1
+    brightness = 1
+  }
+  shadow_ignore_window = true
+  shadow_range = 30
+  shadow_render_power = 4
+  col.shadow = rgba(00000.75)
+}
+
+animations {
+  bezier = myBezier, 0.05, 0.9, 0.1, 1.05
+  animation = windows, 1, 7, myBezier
+  animation = windowsOut, 1, 7, default, popin 80%
+  animation = border, 1, 10, default
+  animation = borderangle, 1, 8, default
+  animation = fade, 1, 7, default
+  animation = workspaces, 1, 6, default
+}
+
+misc {
+  enable_swallow = true
+  swallow_regex = ^($terminal|kitty|wezterm)$
+}
+
+$mainMod = SUPER
+
+bind = $mainMod, H, movefocus, l
+bind = $mainMod, K, movefocus, u
+bind = $mainMod, J, movefocus, d
+bind = $mainMod, L, movefocus, r
+
+workspace=1,monitor:HDMI-A-1
+workspace=2,monitor:HDMI-A-1
+workspace=3,monitor:HDMI-A-1
+workspace=4,monitor:HDMI-A-1
+workspace=5,monitor:HDMI-A-1
+workspace=6,monitor:DP-1
+workspace=7,monitor:DP-1
+workspace=8,monitor:DP-1
+workspace=9,monitor:DP-1
+workspace=10,monitor:DP-1
+
+bind = $mainMod, 1, exec, hyprsome workspace 1
+bind = $mainMod, 2, exec, hyprsome workspace 2
+bind = $mainMod, 3, exec, hyprsome workspace 3
+bind = $mainMod, 4, exec, hyprsome workspace 4
+bind = $mainMod, 5, exec, hyprsome workspace 5
+bind = $mainMod, 6, exec, hyprsome workspace 6
+bind = $mainMod, 7, exec, hyprsome workspace 7
+bind = $mainMod, 8, exec, hyprsome workspace 8
+bind = $mainMod, 9, exec, hyprsome workspace 9
+bind = $mainMod, 0, exec, hyprsome workspace 10
+
+
+# Scroll through existing workspaces with mainMod + scroll
+bind = $mainMod, mouse_down, workspace, e+1
+bind = $mainMod, mouse_up, workspace, e-1
+
+# Move/resize windows with mainMod + LMB/RMB and dragging
+bindm = $mainMod, mouse:272, movewindow
+bindm = $mainMod, mouse:273, resizewindow
+
